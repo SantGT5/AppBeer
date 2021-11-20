@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   get: ^4.3.8
   google_fonts: ^2.1.0
+  flutter_signin_button: ^2.0.0
 
 dev_dependencies:
   flutter_test:
@@ -47,6 +48,18 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^1.0.0
+
+# https://pub.dev/packages/flutter_launcher_icons
+  flutter_launcher_icons: ^0.9.0
+ 
+flutter_icons:
+  image_path_android: "assets/launcher/appicon-android.png"
+  image_path_ios: "assets/launcher/appicon-ios.png"
+  adaptive_icon_background: "assets/launcher/adaptive-icon-background.png"
+  adaptive_icon_foreground: "assets/launcher/adaptive-icon-foreground.png"
+  android: true
+  ios: true
+  remove_alpha_ios: true
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

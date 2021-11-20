@@ -24,13 +24,13 @@ final TextTheme textTheme = TextTheme(
   ),
   headline5: GoogleFonts.notoSans(
     color: Colors.black,
-    fontSize: 12,
-    fontWeight: FontWeight.normal,
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
   ),
-  headline6: GoogleFonts.notoSans(
+  headline6: GoogleFonts.abel(
     color: Colors.black,
-    fontSize: 20,
-    fontWeight: FontWeight.w300,
+    fontSize: 30,
+    fontWeight: FontWeight.w600,
   ),
   subtitle1: GoogleFonts.notoSans(
     color: Colors.black,
