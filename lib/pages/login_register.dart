@@ -15,12 +15,9 @@ class LoginRegister extends StatelessWidget {
                 shadowColor: Colors.transparent,
                 backgroundColor: Colors.white,
                 title: TabBar(
-                  labelPadding: const EdgeInsets.symmetric(horizontal: 28.0),
-                  indicatorPadding:
-                      const EdgeInsets.symmetric(horizontal: 20.0),
+                  indicatorPadding: const EdgeInsets.symmetric(horizontal: 40),
                   indicatorColor: const Color(0xFFFFB449),
                   indicatorWeight: 3,
-                  isScrollable: true,
                   tabs: [
                     Tab(
                         icon: Text("Login",
