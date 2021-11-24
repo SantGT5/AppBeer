@@ -1,7 +1,7 @@
 import 'package:appbeer/pages/intro.dart';
 import 'package:appbeer/theme/app_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+// import 'package:flutter/services.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 void main() {

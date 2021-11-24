@@ -18,13 +18,16 @@ class BeerAPIController extends GetxController {
   }
 
   loadJson() async {
+    try {
+      String url = "https://api.punkapi.com/v2/beers";
+
+      final data = await http.get(Uri.parse(url));
+
+      JsonResult = data;
+      _beersList.value = BeerAPI.fromJson(JsonResult).data;
+    } catch (err) {
+      print(err);
+    }
     // String data = await rootBundle.loadString("assets/users.json");
-
-    String url = "https://api.punkapi.com/v2/beers";
-
-    final data = await http.get(Uri.parse(url));
-
-    JsonResult = data;
-    _beersList.value = BeerAPI.fromJson(JsonResult).data;
   }
 }
