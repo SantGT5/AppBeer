@@ -1,8 +1,8 @@
 import 'package:appbeer/controller/auth_controller.dart';
-import 'package:appbeer/controller/login_controller.dart';
+import 'package:appbeer/global_widget/show_alert_dialog.dart';
 import 'package:appbeer/global_widget/textfield_global.dart';
 import 'package:appbeer/pages/home.dart';
-import 'package:appbeer/utils/forma_validator.dart';
+import 'package:appbeer/utils/form_validator.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +10,6 @@ import 'package:flutter/material.dart';
 class Login extends StatelessWidget {
   Login({Key? key}) : super(key: key);
 
-  final LoginController c = Get.put(LoginController());
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -55,32 +54,6 @@ class Login extends StatelessWidget {
                                 onSave: (value) => authController
                                     .emailController.text = value!,
                               ),
-
-                              // TextFormField(
-                              //   validator: (value) {
-                              //     if (value == null || value.isEmpty) {
-                              //       return "Correo inválido";
-                              //     }
-                              //     return null;
-                              //   },
-                              //   keyboardType: TextInputType.emailAddress,
-                              //   cursorColor: Colors.black,
-                              //   decoration: InputDecoration(
-                              //     fillColor: Colors.white,
-                              //     filled: true,
-                              //     hintText: 'beer@ejemplo.com',
-                              //     hintStyle: const TextStyle(
-                              //         fontSize: 14, color: Colors.black),
-                              //     focusedBorder: const OutlineInputBorder(
-                              //         borderSide:
-                              //             BorderSide(color: Colors.black)),
-                              //     border: OutlineInputBorder(
-                              //         borderRadius: BorderRadius.circular(5)),
-                              //   ),
-                              //   onChanged: (content) {
-                              //     c.controllerCorreo(content);
-                              //   },
-                              // ),
                             ),
                             const SizedBox(height: 25),
                             Container(
@@ -95,53 +68,69 @@ class Login extends StatelessWidget {
                               padding:
                                   const EdgeInsets.only(left: 30, right: 30),
                               width: double.infinity,
-                              child: GlobalTextField(
-                                suffixIcon: IconButton(
-                                  icon: Icon(Icons.remove_red_eye),
-                                  color: Colors.black,
-                                  onPressed: () {},
+                              child: Obx(
+                                () => GlobalTextField(
+                                  suffixIcon: IconButton(
+                                    icon: Icon(
+                                        authController.obscureTextPass.value ==
+                                                true
+                                            ? Icons.remove_red_eye
+                                            : Icons.remove_red_eye_outlined),
+                                    color: Colors.black,
+                                    onPressed: () {
+                                      authController.obscureTextPass.value =
+                                          !authController.obscureTextPass.value;
+                                    },
+                                  ),
+                                  obscureText:
+                                      authController.obscureTextPass.value,
+                                  hintText: "Tu Contraseña",
+                                  validator: FormValidator().isValidPass,
+                                  keyboardType: TextInputType.text,
+                                  controller: authController.passController,
+                                  maxLines: 1,
+                                  minLines: 1,
+                                  onSave: (value) => authController
+                                      .passController.text = value!,
                                 ),
-                                obscureText: true,
-                                hintText: "Tu Contraseña",
-                                validator: FormValidator().isValidPass,
-                                keyboardType: TextInputType.text,
-                                controller: authController.passController,
-                                maxLines: 1,
-                                minLines: 1,
-                                onSave: (value) =>
-                                    authController.passController.text = value!,
                               ),
+                            ),
 
-                              // TextFormField(
-                              //   obscureText: c.contrasenaEye.value == "true"
-                              //       ? true
-                              //       : false,
-                              //   cursorColor: Colors.black,
-                              //   decoration: InputDecoration(
-                              //     suffixIcon: IconButton(
-                              //       icon: Icon(c.contrasenaEye.value == "true"
-                              //           ? Icons.remove_red_eye
-                              //           : Icons.remove_red_eye_outlined),
-                              //       color: Colors.black,
-                              //       onPressed: () {
-                              //         c.controllerEye();
-                              //       },
-                              //     ),
-                              //     fillColor: Colors.white,
-                              //     filled: true,
-                              //     hintText: 'Tu contraseña',
-                              //     hintStyle: const TextStyle(
-                              //         fontSize: 14, color: Colors.black),
-                              //     focusedBorder: const OutlineInputBorder(
-                              //         borderSide:
-                              //             BorderSide(color: Colors.black)),
-                              //     border: OutlineInputBorder(
-                              //         borderRadius: BorderRadius.circular(5)),
-                              //   ),
-                              //   onChanged: (content) {
-                              //     c.controllerContrasena(content);
-                              //   },
-                              // ),
+                            const SizedBox(height: 15),
+                            Container(
+                              padding:
+                                  const EdgeInsets.only(left: 30, right: 30),
+                              width: double.infinity,
+                              child: Obx(
+                                () => GlobalTextField(
+                                  suffixIcon: IconButton(
+                                    icon: Icon(authController
+                                                .obscurePassConfirmation
+                                                .value ==
+                                            true
+                                        ? Icons.remove_red_eye
+                                        : Icons.remove_red_eye_outlined),
+                                    color: Colors.black,
+                                    onPressed: () {
+                                      authController
+                                              .obscurePassConfirmation.value =
+                                          !authController
+                                              .obscurePassConfirmation.value;
+                                    },
+                                  ),
+                                  obscureText: authController
+                                      .obscurePassConfirmation.value,
+                                  hintText: "Tu Contraseña",
+                                  validator: FormValidator().isValidPass,
+                                  keyboardType: TextInputType.text,
+                                  controller:
+                                      authController.passConfirmController,
+                                  maxLines: 1,
+                                  minLines: 1,
+                                  onSave: (value) => authController
+                                      .passConfirmController.text = value!,
+                                ),
+                              ),
                             ),
                             // Image.asset("assets/image/thumbs_up.png"),
                             // const Icon(AppIcons.menu_icon),
@@ -186,16 +175,29 @@ class Login extends StatelessWidget {
                                             fontWeight: FontWeight.bold,
                                             color: Colors.black)),
                                     onPressed: () {
-                                      if (_formKey.currentState!.validate()) {
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          SnackBar(
-                                            duration: Duration(seconds: 3),
-                                            content:
-                                                Text('Your data is correct'),
-                                          ),
+                                      if (authController
+                                              .passConfirmController.text !=
+                                          authController.passController.text) {
+                                        showAlertDialog(context, "Error",
+                                            "Las contraseñas no son iguales");
+                                      } else if (_formKey.currentState!
+                                          .validate()) {
+                                        Get.to(Home());
+                                        Get.snackbar(
+                                          "Your data is correct",
+                                          "Wellcome",
+                                          icon: Icon(Icons.person,
+                                              color: Colors.white),
+                                          snackPosition: SnackPosition.BOTTOM,
                                         );
-                                        Get.to(const Home());
+                                        // ScaffoldMessenger.of(context)
+                                        //     .showSnackBar(
+                                        //   SnackBar(
+                                        //     duration: Duration(seconds: 5),
+                                        //     content:
+                                        //         Text('Your data is correct'),
+                                        //   ),
+                                        // );
                                       }
                                     }),
                               ),

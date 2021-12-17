@@ -1,4 +1,5 @@
-import 'package:appbeer/pages/intro.dart';
+// import 'package:appbeer/pages/intro.dart';
+import 'package:appbeer/pages/api_test.dart';
 import 'package:appbeer/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter/services.dart';
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Material App',
-      home: const Intro(),
+      home: const APITest(),
       theme: appTheme,
     );
   }

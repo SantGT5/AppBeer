@@ -1,14 +1,23 @@
+import 'package:appbeer/models/boil_volume.dart';
+
 import "package:json_annotation/json_annotation.dart";
 
 part 'beer.g.dart';
 
 @JsonSerializable()
 class Beer {
-  Beer(this.id, this.name, this.yeast);
+  BoilVolume? boil_volume;
+  String? name;
+  String? image_url;
+  String? description;
+  String? tagline;
 
-  int id;
-  String name;
-  String yeast;
+  Beer(
+      {this.name,
+      this.image_url,
+      this.description,
+      this.boil_volume,
+      this.tagline});
 
   factory Beer.fromJson(Map<String, dynamic> json) => _$BeerFromJson(json);
 

@@ -41,8 +41,7 @@ dependencies:
   json_annotation: ^4.3.0
   json_serializable:
   build_runner:
-  introduction_screen: ^2.1.0
-  
+  introduction_screen: ^2.1.0  
   
 
 dev_dependencies:
