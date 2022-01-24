@@ -22,6 +22,12 @@
 		<string>$(FLUTTER_BUILD_NUMBER)</string>
 		<key>LSRequiresIPhoneOS</key>
 		<true/>
+		<key>NSCameraUsageDescription</key>
+		<string>Need to upload image</string>
+		<key>NSMicrophoneUsageDescription</key>
+		<string>Need to upload image</string>
+		<key>NSPhotoLibraryUsageDescription</key>
+		<string>Need to upload image</string>
 		<key>UILaunchStoryboardName</key>
 		<string>LaunchScreen</string>
 		<key>UIMainStoryboardFile</key>
@@ -43,5 +49,18 @@
 		<false/>
 		<key>UIStatusBarHidden</key>
 		<false/>
+			<!-- Google Sign-in -->
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <!-- Replaceme GoogleService-Info.plist key REVERSED_CLIENT_ID development: -->
+                <string>com.googleusercontent.apps.1094252649681-rlp09bpp6lrigm4n02ju3rbpn1s6pkhn</string>
+            </array>
+        </dict>
+    </array>
 	</dict>
 </plist>
